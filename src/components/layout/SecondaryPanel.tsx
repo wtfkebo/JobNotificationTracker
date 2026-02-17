@@ -1,8 +1,7 @@
-import React from 'react';
+
 import './SecondaryPanel.css';
 import { Button } from '../ui/Button';
-import { Copy, Terminal, Check, AlertTriangle, Image as ImageIcon } from 'lucide-react';
-import { Card } from '../ui/Card';
+import { Copy, Check, AlertTriangle, Image as ImageIcon } from 'lucide-react';
 
 interface SecondaryPanelProps {
     stepDescription?: string;
