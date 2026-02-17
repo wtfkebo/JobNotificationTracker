@@ -1,0 +1,53 @@
+.proof-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.proof-container {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.proof-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    /* Prevent text selection on click */
+    transition: opacity var(--transition-short);
+}
+
+.proof-item:hover {
+    opacity: 0.8;
+}
+
+.proof-label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.proof-icon {
+    color: var(--color-text-primary);
+}
+
+.proof-item--checked .proof-icon {
+    color: var(--color-success);
+    /* Use success color for checked state */
+}
+
+.proof-item--checked .proof-label {
+    text-decoration: line-through;
+    opacity: 0.6;
+}

@@ -1,0 +1,9 @@
+.primary-workspace {
+    flex: 7;
+    padding: var(--space-4);
+    background-color: var(--color-background);
+    /* Ensure it takes up available height but scrolls if needed */
+    overflow-y: auto;
+    min-width: 0;
+    /* Prevents flex issues */
+}

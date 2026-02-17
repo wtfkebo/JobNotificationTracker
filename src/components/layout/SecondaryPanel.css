@@ -1,0 +1,74 @@
+.secondary-panel {
+    flex: 3;
+    padding: var(--space-3);
+    background-color: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-content {
+    position: sticky;
+    top: calc(var(--topbar-height) + var(--space-3));
+}
+
+.panel-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-1);
+}
+
+.panel-description {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    opacity: 0.8;
+    margin-bottom: var(--space-3);
+    line-height: 1.5;
+}
+
+.prompt-box {
+    background-color: #F8F9FA;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.prompt-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    opacity: 0.5;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.prompt-content {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    white-space: pre-wrap;
+}
+
+.copy-btn {
+    margin-top: 8px;
+}
+
+.panel-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.action-grid>button:last-child {
+    grid-column: span 2;
+}

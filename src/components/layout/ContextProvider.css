@@ -1,0 +1,24 @@
+.context-provider {
+    margin-bottom: var(--space-4);
+    padding: 0 var(--space-1);
+}
+
+.context-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    /* Large, confident */
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.context-description {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    /* 18px */
+    color: var(--color-text-primary);
+    opacity: 0.8;
+    max-width: 720px;
+    line-height: 1.6;
+}

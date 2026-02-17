@@ -1,0 +1,17 @@
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: var(--topbar-height);
+    padding-bottom: 48px;
+    /* Proof Footer height */
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: 1440px;
+    /* Max width for large screens */
+    margin: 0 auto;
+}
