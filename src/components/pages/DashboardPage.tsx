@@ -14,6 +14,13 @@ import {
 import type { Preferences } from '../../utils/matching';
 import { Card } from '../ui/Card';
 import { Zap } from 'lucide-react';
+import {
+    getAllJobStatuses,
+    updateJobStatus,
+    getStatusLabel
+} from '../../utils/status';
+import type { JobStatus } from '../../utils/status';
+import { Toast } from '../ui/Toast';
 import './DashboardPage.css';
 
 interface ScoredJob extends Job {
@@ -28,6 +35,10 @@ export const DashboardPage: React.FC = () => {
     const [prefs, setPrefs] = useState<Preferences>(DEFAULT_PREFERENCES);
     const [showOnlyMatches, setShowOnlyMatches] = useState(false);
 
+    // Status State
+    const [jobStatuses, setJobStatuses] = useState<Record<string, JobStatus>>({});
+    const [toast, setToast] = useState({ message: '', visible: false });
+
     // Filter states
     const [filters, setFilters] = useState({
         keyword: '',
@@ -35,6 +46,7 @@ export const DashboardPage: React.FC = () => {
         experience: '',
         mode: '',
         source: '',
+        status: '',
         sort: 'latest' // 'latest' | 'salary' | 'match'
     });
 
@@ -49,6 +61,10 @@ export const DashboardPage: React.FC = () => {
         if (savedPrefs) {
             setPrefs(JSON.parse(savedPrefs));
         }
+
+        // Load statuses
+        const statuses = getAllJobStatuses();
+        setJobStatuses(statuses);
     }, []);
 
     const handleSaveJob = (jobId: string) => {
@@ -74,6 +90,22 @@ export const DashboardPage: React.FC = () => {
 
     const handleSearch = (newFilters: any) => {
         setFilters(prev => ({ ...prev, ...newFilters }));
+    };
+
+    const handleStatusChange = (jobId: string, newStatus: JobStatus) => {
+        const job = jobData.find(j => j.id === jobId);
+        if (job) {
+            updateJobStatus(jobId, newStatus, job.title, job.company);
+            setJobStatuses(prev => ({ ...prev, [jobId]: newStatus }));
+
+            // Show toast
+            if (newStatus !== 'not-applied') {
+                setToast({
+                    message: `Status updated: ${getStatusLabel(newStatus)}`,
+                    visible: true
+                });
+            }
+        }
     };
 
     // Compute matches and filter
@@ -111,6 +143,14 @@ export const DashboardPage: React.FC = () => {
             if (filters.experience && job.experience !== filters.experience) return false;
             if (filters.mode && job.mode !== filters.mode) return false;
             if (filters.source && job.source !== filters.source) return false;
+
+            if (filters.source && job.source !== filters.source) return false;
+
+            // Status Filter
+            if (filters.status) {
+                const currentStatus = jobStatuses[job.id] || 'not-applied';
+                if (currentStatus !== filters.status) return false;
+            }
 
             return true;
         });
@@ -173,6 +213,8 @@ export const DashboardPage: React.FC = () => {
                                 matchColor={job.matchColor}
                                 onView={handleViewJob}
                                 onSave={handleSaveJob}
+                                status={jobStatuses[job.id] || 'not-applied'}
+                                onStatusChange={handleStatusChange}
                             />
                         ))}
                     </div>
@@ -194,6 +236,12 @@ export const DashboardPage: React.FC = () => {
                 job={selectedJob}
                 isOpen={isModalOpen}
                 onClose={closeModal}
+            />
+
+            <Toast
+                message={toast.message}
+                isVisible={toast.visible}
+                onClose={() => setToast(prev => ({ ...prev, visible: false }))}
             />
         </PrimaryWorkspace>
     );

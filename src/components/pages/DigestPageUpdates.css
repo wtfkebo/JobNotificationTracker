@@ -1,0 +1,48 @@
+.digest-section {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid #eee;
+}
+
+.digest-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-3);
+    color: var(--color-text-primary);
+}
+
+.status-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status-history-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.status-info {
+    flex: 1;
+}
+
+.status-job {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+.status-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}

@@ -13,6 +13,8 @@ import {
 } from '../../utils/digest';
 import type { Digest } from '../../utils/digest';
 import type { Preferences } from '../../utils/matching';
+import { getStatusHistory, getStatusLabel, getStatusColor } from '../../utils/status';
+import type { StatusHistoryItem } from '../../utils/status';
 import './DigestPage.css';
 
 export const DigestPage: React.FC = () => {
@@ -20,6 +22,7 @@ export const DigestPage: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [hasPrefs, setHasPrefs] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [statusHistory, setStatusHistory] = useState<StatusHistoryItem[]>([]);
 
     useEffect(() => {
         // Check preferences
@@ -33,6 +36,8 @@ export const DigestPage: React.FC = () => {
                 setDigest(existing);
             }
         }
+        // Load status history
+        setStatusHistory(getStatusHistory());
     }, []);
 
     const handleGenerate = () => {
@@ -165,6 +170,25 @@ export const DigestPage: React.FC = () => {
                                     </div>
                                 )}
                             </div>
+
+                            {statusHistory.length > 0 && (
+                                <div className="digest-section">
+                                    <h2 className="digest-section-title">Recent Status Updates</h2>
+                                    <div className="status-history-list">
+                                        {statusHistory.slice(0, 5).map((item, idx) => (
+                                            <div key={idx} className="status-history-item">
+                                                <div className="status-dot" style={{ backgroundColor: getStatusColor(item.status) === 'green' ? '#22c55e' : getStatusColor(item.status) === 'red' ? '#ef4444' : '#3b82f6' }}></div>
+                                                <div className="status-info">
+                                                    <div className="status-job">{item.title} at {item.company}</div>
+                                                    <div className="status-meta">
+                                                        Marked as <strong>{getStatusLabel(item.status)}</strong> &bull; {new Date(item.date).toLocaleDateString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="digest-footer">
                                 <p>This digest was generated based on your preferences.</p>

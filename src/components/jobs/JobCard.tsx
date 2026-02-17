@@ -12,6 +12,8 @@ interface JobCardProps {
     matchColor?: 'green' | 'amber' | 'neutral' | 'grey';
     onView: (job: Job) => void;
     onSave: (jobId: string) => void;
+    status?: 'not-applied' | 'applied' | 'rejected' | 'selected';
+    onStatusChange?: (jobId: string, status: 'not-applied' | 'applied' | 'rejected' | 'selected') => void;
 }
 
 export const JobCard: React.FC<JobCardProps> = ({
@@ -20,7 +22,9 @@ export const JobCard: React.FC<JobCardProps> = ({
     matchScore,
     matchColor = 'grey',
     onView,
-    onSave
+    onSave,
+    status = 'not-applied',
+    onStatusChange
 }) => {
     const handleApply = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -32,9 +36,25 @@ export const JobCard: React.FC<JobCardProps> = ({
         onSave(job.id);
     };
 
+    const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        e.stopPropagation();
+        if (onStatusChange) {
+            onStatusChange(job.id, e.target.value as any);
+        }
+    };
+
+    const getStatusClass = (s: string) => {
+        switch (s) {
+            case 'applied': return 'status-applied';
+            case 'rejected': return 'status-rejected';
+            case 'selected': return 'status-selected';
+            default: return 'status-neutral';
+        }
+    };
+
     return (
         <div className="job-card-wrapper" onClick={() => onView(job)}>
-            <Card hoverable className="job-card">
+            <Card hoverable className={`job-card ${getStatusClass(status)}`}>
                 <div className="job-card-header">
                     <div>
                         <h3 className="job-title">{job.title}</h3>
@@ -73,6 +93,18 @@ export const JobCard: React.FC<JobCardProps> = ({
                         {job.source}
                     </div>
                     <div className="job-actions">
+                        <div className="status-selector-wrapper" onClick={e => e.stopPropagation()}>
+                            <select
+                                className={`status-select ${getStatusClass(status)}`}
+                                value={status}
+                                onChange={handleStatusChange}
+                            >
+                                <option value="not-applied">Not Applied</option>
+                                <option value="applied">Applied</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="selected">Selected</option>
+                            </select>
+                        </div>
                         <Button
                             variant="secondary"
                             size="sm"
