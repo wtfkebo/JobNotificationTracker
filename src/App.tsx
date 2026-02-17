@@ -26,6 +26,7 @@ function App() {
             <Route path="/proof" element={<ProofPage />} />
             <Route path="/jt/07-test" element={<TestPage />} />
             <Route path="/jt/08-ship" element={<ShipPage />} />
+            <Route path="/jt/proof" element={<ProofPage />} />
           </Routes>
         </main>
       </div>
