@@ -1,14 +1,11 @@
 .settings-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    max-width: 800px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: var(--space-5);
 }
 
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+.settings-card {
+    margin-bottom: var(--space-4);
 }
 
 .form-group {
@@ -17,26 +14,45 @@
     gap: 8px;
 }
 
-.form-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-primary);
-}
-
-.form-help {
-    font-size: 14px;
-    color: var(--color-text-primary);
-    opacity: 0.7;
-}
-
-.mode-options {
+.checkbox-group {
     display: flex;
+    gap: var(--space-4);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+.settings-select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.range-input {
+    width: 100%;
+    cursor: pointer;
 }
 
 .settings-actions {
-    margin-top: var(--space-4);
     display: flex;
     justify-content: flex-end;
+    margin-top: var(--space-4);
+    position: sticky;
+    bottom: var(--space-4);
+    z-index: 10;
+}
+
+.save-btn {
+    min-width: 120px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

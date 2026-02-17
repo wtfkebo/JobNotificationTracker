@@ -8,11 +8,20 @@ import './JobCard.css';
 interface JobCardProps {
     job: Job;
     isSaved?: boolean;
+    matchScore?: number;
+    matchColor?: 'green' | 'amber' | 'neutral' | 'grey';
     onView: (job: Job) => void;
     onSave: (jobId: string) => void;
 }
 
-export const JobCard: React.FC<JobCardProps> = ({ job, isSaved = false, onView, onSave }) => {
+export const JobCard: React.FC<JobCardProps> = ({
+    job,
+    isSaved = false,
+    matchScore,
+    matchColor = 'grey',
+    onView,
+    onSave
+}) => {
     const handleApply = (e: React.MouseEvent) => {
         e.stopPropagation();
         window.open(job.applyUrl, '_blank');
@@ -36,6 +45,12 @@ export const JobCard: React.FC<JobCardProps> = ({ job, isSaved = false, onView, 
                         <span>{job.postedDaysAgo === 0 ? 'Today' : `${job.postedDaysAgo}d ago`}</span>
                     </div>
                 </div>
+
+                {matchScore !== undefined && (
+                    <div className={`match-badge match-badge--${matchColor}`}>
+                        {matchScore}% Match
+                    </div>
+                )}
 
                 <div className="job-meta">
                     <div className="meta-item">
