@@ -1,50 +1,30 @@
 
-import { AppLayout } from './components/layout/AppLayout';
-import { ContextProvider } from './components/layout/ContextProvider';
-import { PrimaryWorkspace } from './components/layout/PrimaryWorkspace';
-import { SecondaryPanel } from './components/layout/SecondaryPanel';
-import { Card } from './components/ui/Card';
-import { Input } from './components/ui/Input';
-import { Button } from './components/ui/Button';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Navigation } from './components/layout/Navigation';
+import { DashboardPage } from './components/pages/DashboardPage';
+import { SavedPage } from './components/pages/SavedPage';
+import { DigestPage } from './components/pages/DigestPage';
+import { SettingsPage } from './components/pages/SettingsPage';
+import { ProofPage } from './components/pages/ProofPage';
+import './components/layout/AppLayout.css'; // Re-use layout styles if applicable
 
 function App() {
   return (
-    <AppLayout step={1} totalSteps={5} status="not-started">
-      <PrimaryWorkspace>
-        <ContextProvider
-          title="Project Initialization"
-          description="Define the core parameters of your application. This foundation will drive all subsequent build steps."
-        />
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <Card title="Core Settings" padding="lg">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <Input label="Project Name" placeholder="e.g. KodNest Premium" />
-              <Input label="Domain" placeholder="e.g. kodnest.com" />
-              <Input label="Description" placeholder="Briefly describe your project..." />
-            </div>
-            <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
-              <Button variant="ghost">Cancel</Button>
-              <Button>Save Settings</Button>
-            </div>
-          </Card>
-
-          <Card title="Configuration" padding="lg">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <Input label="API Key" placeholder="sk-..." type="password" />
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <Button variant="secondary">Check Connection</Button>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </PrimaryWorkspace>
-
-      <SecondaryPanel
-        stepDescription="We are currently initializing the project structure. Review the settings on the left and click 'Build in Lovable' to proceed."
-        prompt="Create a detailed project plan for a SaaS application with..."
-      />
-    </AppLayout>
+    <Router>
+      <div className="app-layout" style={{ paddingTop: '64px' }}>
+        <Navigation />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/saved" element={<SavedPage />} />
+            <Route path="/digest" element={<DigestPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/proof" element={<ProofPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
