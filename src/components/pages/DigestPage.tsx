@@ -9,10 +9,10 @@ import {
     generateDigest,
     getExistingDigest,
     getTodayDateString,
-    formatDigestForClipboard,
-    Digest
+    formatDigestForClipboard
 } from '../../utils/digest';
-import { DEFAULT_PREFERENCES, Preferences } from '../../utils/matching';
+import type { Digest } from '../../utils/digest';
+import type { Preferences } from '../../utils/matching';
 import './DigestPage.css';
 
 export const DigestPage: React.FC = () => {

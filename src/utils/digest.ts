@@ -1,5 +1,6 @@
-import { Job } from '../data/jobs';
-import { Preferences, calculateMatchScore } from './matching';
+import type { Job } from '../data/jobs';
+import { calculateMatchScore } from './matching';
+import type { Preferences } from './matching';
 
 export interface Digest {
     date: string;
