@@ -1,0 +1,38 @@
+.landing-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    /* Minus nav height */
+    background-color: var(--color-background);
+    padding: var(--space-4);
+    text-align: center;
+}
+
+.landing-content {
+    max-width: 800px;
+}
+
+.landing-headline {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    line-height: 1.1;
+}
+
+.landing-subtext {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+    margin: 0 auto var(--space-5);
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.landing-cta {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,42 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 800px;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.form-help {
+    font-size: 14px;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+}
+
+.mode-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.settings-actions {
+    margin-top: var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+}

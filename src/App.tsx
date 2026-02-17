@@ -1,6 +1,7 @@
 
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/layout/Navigation';
+import { LandingPage } from './components/pages/LandingPage';
 import { DashboardPage } from './components/pages/DashboardPage';
 import { SavedPage } from './components/pages/SavedPage';
 import { DigestPage } from './components/pages/DigestPage';
@@ -15,7 +16,7 @@ function App() {
         <Navigation />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/saved" element={<SavedPage />} />
             <Route path="/digest" element={<DigestPage />} />
