@@ -1,0 +1,123 @@
+.test-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: var(--space-4);
+}
+
+.test-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.test-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.test-score h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.score-pass {
+    color: #22c55e;
+}
+
+.score-pending {
+    color: var(--color-text-primary);
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-badge.pass {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.fail {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.test-warning {
+    color: #ef4444;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.checklist-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #f3f3f3;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checklist-item:hover {
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+}
+
+.checklist-item input {
+    margin-top: 4px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item-label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.item-tooltip {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.test-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid #eee;
+}
+
+.reset-btn {
+    color: var(--color-text-secondary);
+}
+
+.ship-btn {
+    min-width: 140px;
+}

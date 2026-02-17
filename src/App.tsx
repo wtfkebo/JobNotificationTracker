@@ -7,6 +7,8 @@ import { SavedPage } from './components/pages/SavedPage';
 import { DigestPage } from './components/pages/DigestPage';
 import { SettingsPage } from './components/pages/SettingsPage';
 import { ProofPage } from './components/pages/ProofPage';
+import { TestPage } from './components/pages/TestPage';
+import { ShipPage } from './components/pages/ShipPage';
 import './components/layout/AppLayout.css'; // Re-use layout styles if applicable
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
             <Route path="/digest" element={<DigestPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/proof" element={<ProofPage />} />
+            <Route path="/jt/07-test" element={<TestPage />} />
+            <Route path="/jt/08-ship" element={<ShipPage />} />
           </Routes>
         </main>
       </div>

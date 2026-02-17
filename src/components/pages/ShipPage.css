@@ -1,0 +1,73 @@
+.ship-locked-container,
+.ship-success-container {
+    max-width: 600px;
+    margin: var(--space-6) auto;
+    text-align: center;
+}
+
+.locked-card,
+.success-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.locked-icon {
+    color: var(--color-text-secondary);
+    background: #f3f3f3;
+    padding: 24px;
+    border-radius: 50%;
+}
+
+.success-icon {
+    color: #22c55e;
+    background: #dcfce7;
+    padding: 24px;
+    border-radius: 50%;
+}
+
+.locked-card h3,
+.success-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.locked-card p,
+.success-card p {
+    color: var(--color-text-secondary);
+    max-width: 400px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.deployment-steps {
+    text-align: left;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin: var(--space-4) 0;
+    border: 1px solid #eee;
+}
+
+.deployment-steps h4 {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.step-check {
+    color: #22c55e;
+}
